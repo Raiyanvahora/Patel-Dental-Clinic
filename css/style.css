@@ -1564,6 +1564,286 @@ img {
     color: var(--dark);
 }
 
+/* ===== PRELOADER ===== */
+.preloader {
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-inner {
+    text-align: center;
+}
+
+.preloader-tooth {
+    font-size: 3rem;
+    color: var(--primary);
+    animation: preloader-bounce 1s ease-in-out infinite;
+}
+
+.preloader-inner p {
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 1.1rem;
+}
+
+@keyframes preloader-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* ===== NAVBAR SCROLLED STATE ===== */
+.navbar.scrolled {
+    padding: 8px 0;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+}
+
+.navbar.scrolled .logo {
+    font-size: 1.2rem;
+}
+
+.navbar.scrolled .logo svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* ===== HERO OUTLINE BUTTON ===== */
+.btn-hero-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.5);
+}
+
+.btn-hero-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+    border-color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* CTA section outline button */
+.cta-section .btn-hero-outline:hover {
+    color: var(--primary);
+}
+
+/* ===== HERO BG PATTERN ===== */
+.hero-bg-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+}
+
+/* ===== HERO SECONDARY IMAGE ===== */
+.hero-img-secondary {
+    position: absolute;
+    bottom: -20px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: var(--shadow-lg);
+    z-index: 3;
+}
+
+.hero-img-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== CLINIC SHOWCASE ===== */
+.clinic-showcase {
+    padding-bottom: 60px;
+    overflow: hidden;
+}
+
+.showcase-scroll {
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.showcase-track {
+    display: flex;
+    gap: 20px;
+    animation: showcase-scroll 30s linear infinite;
+    width: max-content;
+}
+
+.showcase-item {
+    flex-shrink: 0;
+    width: 300px;
+    height: 220px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.showcase-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.showcase-item:hover img {
+    transform: scale(1.05);
+}
+
+@keyframes showcase-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.showcase-scroll:hover .showcase-track {
+    animation-play-state: paused;
+}
+
+/* ===== PATIENTS BANNER ===== */
+.patients-banner {
+    background: var(--primary);
+    padding: 60px 0;
+    color: var(--white);
+}
+
+.patients-banner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.patients-banner-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.patients-banner-content p {
+    opacity: 0.85;
+    font-size: 1rem;
+}
+
+.patients-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.patient-photo {
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 1;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+.patient-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.patient-photo:hover img {
+    transform: scale(1.08);
+}
+
+/* ===== WHY CHOOSE IMAGES GRID ===== */
+.why-choose-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    height: 500px;
+}
+
+.wc-img {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.wc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.wc-img:hover img {
+    transform: scale(1.05);
+}
+
+.wc-img-1 {
+    grid-row: 1 / 3;
+}
+
+/* ===== MOBILE CTA BAR ===== */
+.mobile-cta-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+    z-index: 998;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-cta-bar.visible {
+    transform: translateY(0);
+}
+
+.mobile-cta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--dark);
+    padding: 5px 10px;
+    min-height: 44px;
+    justify-content: center;
+}
+
+.mobile-cta-item i {
+    font-size: 1.2rem;
+}
+
+.mobile-cta-item.whatsapp {
+    color: #25D366;
+}
+
+.mobile-cta-item.book {
+    color: var(--primary);
+}
+
 /* ===== RESPONSIVE ===== */
 
 /* --- Tablet Landscape (1024px) --- */
@@ -1604,6 +1884,10 @@ img {
     .testimonial-card {
         min-width: 50%;
     }
+
+    .showcase-item { width: 250px; height: 180px; }
+    .patients-banner-grid { grid-template-columns: 1fr; text-align: center; }
+    .why-choose-images { height: 400px; }
 }
 
 /* --- Tablet Portrait / Mobile (768px) --- */
@@ -1762,8 +2046,22 @@ img {
     .lightbox-next { right: 5px; }
 
     /* Float buttons */
-    .whatsapp-btn { width: 52px; height: 52px; font-size: 1.5rem; bottom: 20px; right: 20px; }
-    .back-to-top { width: 40px; height: 40px; bottom: 20px; right: 80px; font-size: 1rem; }
+    .whatsapp-btn { display: none; }
+    .back-to-top { width: 40px; height: 40px; bottom: 80px; right: 20px; font-size: 1rem; }
+
+    /* New elements responsive */
+    .mobile-cta-bar { display: flex; }
+    body { padding-bottom: 70px; }
+    .hero-img-secondary { display: none; }
+    .hero-bg-pattern { display: none; }
+    .showcase-item { width: 220px; height: 160px; }
+    .showcase-track { gap: 12px; }
+    .patients-banner { padding: 40px 0; }
+    .patients-banner-grid { grid-template-columns: 1fr; text-align: center; }
+    .patients-photos { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .patients-banner-content h2 { font-size: 1.6rem; }
+    .why-choose-images { height: 300px; gap: 10px; }
+    .navbar.scrolled { padding: 6px 0; }
 }
 
 /* --- Small Mobile (480px) --- */
@@ -1814,6 +2112,15 @@ img {
     .clinic-images-grid img { height: 200px; }
 
     .map-section { height: 250px; }
+
+    .patients-photos { grid-template-columns: repeat(2, 1fr); }
+    .patients-banner-content h2 { font-size: 1.3rem; }
+    .showcase-item { width: 180px; height: 130px; }
+    .why-choose-images { height: auto; grid-template-columns: 1fr; grid-template-rows: auto; }
+    .wc-img-1 { grid-row: auto; }
+    .wc-img { height: 180px; }
+    .mobile-cta-item { font-size: 0.65rem; }
+    .mobile-cta-item i { font-size: 1rem; }
 }
 
 /* --- Extra Small (360px) --- */
@@ -1838,6 +2145,9 @@ img {
     .stat-box .number { font-size: 1.3rem; }
 
     .nav-links { width: 250px; padding: 70px 20px 20px; }
+
+    .mobile-cta-item { padding: 5px; }
+    .showcase-item { width: 150px; height: 110px; }
 }
 
 /* --- Landscape orientation fix --- */

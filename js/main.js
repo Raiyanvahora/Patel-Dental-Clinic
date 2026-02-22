@@ -1,3 +1,12 @@
+// ===== PRELOADER =====
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => preloader.remove(), 600);
+    }
+});
+
 // ===== MOBILE NAVIGATION =====
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -34,18 +43,32 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== BACK TO TOP =====
+// ===== NAVBAR SCROLL SHRINK + BACK TO TOP + MOBILE CTA =====
+const navbar = document.querySelector('.navbar');
 const backToTop = document.querySelector('.back-to-top');
+const mobileCta = document.getElementById('mobileCta');
 let scrollTicking = false;
 
 window.addEventListener('scroll', () => {
     if (!scrollTicking) {
         window.requestAnimationFrame(() => {
-            if (window.scrollY > 400) {
-                backToTop?.classList.add('visible');
-            } else {
-                backToTop?.classList.remove('visible');
+            const scrollY = window.scrollY;
+
+            // Navbar shrink
+            if (navbar) {
+                navbar.classList.toggle('scrolled', scrollY > 50);
             }
+
+            // Back to top
+            if (backToTop) {
+                backToTop.classList.toggle('visible', scrollY > 400);
+            }
+
+            // Mobile CTA bar
+            if (mobileCta) {
+                mobileCta.classList.toggle('visible', scrollY > 300);
+            }
+
             scrollTicking = false;
         });
         scrollTicking = true;
@@ -263,7 +286,7 @@ if (!prefersReducedMotion) {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.service-card, .feature-item, .team-card, .stat-box, .about-point, .gallery-item, .contact-item').forEach(el => {
+    document.querySelectorAll('.service-card, .feature-item, .team-card, .stat-box, .about-point, .gallery-item, .contact-item, .patient-photo, .wc-img, .showcase-item').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -271,7 +294,7 @@ if (!prefersReducedMotion) {
     });
 
     // Add stagger delay
-    document.querySelectorAll('.services-grid, .features-grid, .stats-grid, .gallery-grid, .team-grid').forEach(grid => {
+    document.querySelectorAll('.services-grid, .features-grid, .stats-grid, .gallery-grid, .team-grid, .patients-photos').forEach(grid => {
         Array.from(grid.children).forEach((child, i) => {
             child.style.transitionDelay = `${i * 0.08}s`;
         });
