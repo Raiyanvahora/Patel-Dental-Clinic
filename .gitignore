@@ -1,0 +1,13 @@
+# Reference images (not needed in deployment)
+reference images/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+.vscode/
+.idea/
